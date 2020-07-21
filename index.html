@@ -47,10 +47,15 @@
 
 <div class="row-fluid">
   <div class="span12">
-    <p><a href="https://pages.github.com">Github Pages</a> provide a simple way to make a
-website using
-<a href="https://daringfireball.net/projects/markdown/">Markdown</a> and
-<a href="https://git-scm.com">git</a>.</p>
+    <p> The <a href="https://pypi.org/project/python-craigslist/">Python Craigslist API Wrapper</a> was used as the primary data source for this project.  The Data Pipeline
+       uses batch processing to extract, transform and load Craigslist data from the Craigslist API.  An AWS Windows EC2 instance runs a python ETL script in 1 hour intervals. 
+      This was achieved using Windows Task Manager event handling.  The extracted/transformed data is stored in tabular format using Google Sheets.  After considering
+      several differen NoSQL and SQL data storage options the most cost and time efficient way to achieve the goal was with Google Sheets.  The ELK stack was also tested
+      as a potential workflow but public sharing of Kibana visualizations was not possible.  Tableau was used for data visualization.  Dashboards generated in
+      Tableau were subsequently saved to Tableau Public, enabling public access. Tableau has a built in connector for Google Sheets, making the importing and 
+      maintenance of data intuitive and simple. Tableau Public also has an auto refresh feature for visualizations that are populated by Google Sheets data. Data
+     is updated once per day automatically.  The initial goal of creating a fully automated data pipeline was achieved. 
+      
 <iframe src="https://drive.google.com/file/d/1inbZlWPTcV3wkVRs1zCmdZ7whovvbYwR/preview"  width="640" height="480"></iframe>
 <p>For me, the painful aspects of making a website are</p>
 
