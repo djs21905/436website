@@ -98,67 +98,68 @@ read any of the other things, such as
   <li><a href="pages/local_test.html">Testing your site locally</a></li>
   <li><a href="pages/resources.html">Resources</a></li>
 </ul>
- <!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">pandas</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">pd</span>
-<span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>
-<span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">craigslist</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">CraigslistHousing</span>
-<span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">gspread</span> 
-<span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">oauth2client.service_account</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">ServiceAccountCredentials</span>
-<span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">gspread_dataframe</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">get_as_dataframe,</span> <span style="color: #d0d0d0">set_with_dataframe</span>
+ <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #0000aa">import</span> <span style="color: #00aaaa; text-decoration: underline">pandas</span> <span style="color: #0000aa">as</span> <span style="color: #00aaaa; text-decoration: underline">pd</span>
+<span style="color: #0000aa">import</span> <span style="color: #00aaaa; text-decoration: underline">numpy</span> <span style="color: #0000aa">as</span> <span style="color: #00aaaa; text-decoration: underline">np</span>
+<span style="color: #0000aa">from</span> <span style="color: #00aaaa; text-decoration: underline">craigslist</span> <span style="color: #0000aa">import</span> CraigslistHousing
+<span style="color: #0000aa">import</span> <span style="color: #00aaaa; text-decoration: underline">gspread</span> 
+<span style="color: #0000aa">from</span> <span style="color: #00aaaa; text-decoration: underline">oauth2client.service_account</span> <span style="color: #0000aa">import</span> ServiceAccountCredentials
+<span style="color: #0000aa">from</span> <span style="color: #00aaaa; text-decoration: underline">gspread_dataframe</span> <span style="color: #0000aa">import</span> get_as_dataframe, set_with_dataframe
 
-<span style="color: #d0d0d0">scope</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[</span><span style="color: #ed9d13">&quot;https://spreadsheets.google.com/feeds&quot;</span><span style="color: #d0d0d0">,</span><span style="color: #ed9d13">&#39;https://www.googleapis.com/auth/spreadsheets&#39;</span><span style="color: #d0d0d0">,</span>
-<span style="color: #ed9d13">&quot;https://www.googleapis.com/auth/drive.file&quot;</span><span style="color: #d0d0d0">,</span><span style="color: #ed9d13">&quot;https://www.googleapis.com/auth/drive&quot;</span><span style="color: #d0d0d0">]</span>
+scope = [<span style="color: #aa5500">&quot;https://spreadsheets.google.com/feeds&quot;</span>,<span style="color: #aa5500">&#39;https://www.googleapis.com/auth/spreadsheets&#39;</span>,
+<span style="color: #aa5500">&quot;https://www.googleapis.com/auth/drive.file&quot;</span>,<span style="color: #aa5500">&quot;https://www.googleapis.com/auth/drive&quot;</span>]
 
-<span style="color: #d0d0d0">creds</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">ServiceAccountCredentials.from_json_keyfile_name(</span><span style="color: #ed9d13">&quot;creds.json&quot;</span><span style="color: #d0d0d0">,scope)</span>
-<span style="color: #d0d0d0">gc=</span> <span style="color: #d0d0d0">gspread.authorize(creds)</span>
-<span style="color: #d0d0d0">sheet</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">gc.open(</span><span style="color: #ed9d13">&quot;436finalproject&quot;</span><span style="color: #d0d0d0">).sheet1</span>
+creds = ServiceAccountCredentials.from_json_keyfile_name(<span style="color: #aa5500">&quot;creds.json&quot;</span>,scope)
+gc= gspread.authorize(creds)
+sheet = gc.open(<span style="color: #aa5500">&quot;436finalproject&quot;</span>).sheet1
 
-<span style="color: #d0d0d0">cl</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">CraigslistHousing(site=</span><span style="color: #ed9d13">&#39;chicago&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">area=</span><span style="color: #ed9d13">&#39;chc&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">category=</span><span style="color: #ed9d13">&#39;apa&#39;</span><span style="color: #d0d0d0">)</span>
-<span style="color: #d0d0d0">results</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">cl.get_results(sort_by=</span><span style="color: #ed9d13">&#39;price_asc&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">geotagged=</span><span style="color: #24909d">True</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">limit</span> <span style="color: #d0d0d0">=</span><span style="color: #3677a9">100</span><span style="color: #d0d0d0">)</span>
+cl = CraigslistHousing(site=<span style="color: #aa5500">&#39;chicago&#39;</span>, area=<span style="color: #aa5500">&#39;chc&#39;</span>, category=<span style="color: #aa5500">&#39;apa&#39;</span>)
+results = cl.get_results(sort_by=<span style="color: #aa5500">&#39;price_asc&#39;</span>, geotagged=<span style="color: #00aaaa">True</span>, limit =<span style="color: #009999">100</span>)
 
-<span style="color: #d0d0d0">df</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span><span style="color: #ed9d13">&#39;id&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;repost_of&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;name&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;url&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;datetime&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;last_updated&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;price&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;where&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;has_image&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;latitude&#39;</span><span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">[],</span>
-<span style="color: #ed9d13">&#39;longitude&#39;</span><span style="color: #d0d0d0">:[]}</span>
+df = {<span style="color: #aa5500">&#39;id&#39;</span>: [],
+<span style="color: #aa5500">&#39;repost_of&#39;</span>: [],
+<span style="color: #aa5500">&#39;name&#39;</span>: [],
+<span style="color: #aa5500">&#39;url&#39;</span>: [],
+<span style="color: #aa5500">&#39;datetime&#39;</span>: [],
+<span style="color: #aa5500">&#39;last_updated&#39;</span>: [],
+<span style="color: #aa5500">&#39;price&#39;</span>: [],
+<span style="color: #aa5500">&#39;where&#39;</span>: [],
+<span style="color: #aa5500">&#39;has_image&#39;</span>: [],
+<span style="color: #aa5500">&#39;latitude&#39;</span>: [],
+<span style="color: #aa5500">&#39;longitude&#39;</span>:[]}
 
-<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">result</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">results:</span>
-    <span style="color: #6ab825; font-weight: bold">print</span><span style="color: #d0d0d0">(result)</span>
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;id&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;id&#39;</span><span style="color: #d0d0d0">])</span>
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;repost_of&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;repost_of&#39;</span><span style="color: #d0d0d0">])</span>
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;name&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;name&#39;</span><span style="color: #d0d0d0">])</span>
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;url&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;url&#39;</span><span style="color: #d0d0d0">])</span>
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;datetime&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;datetime&#39;</span><span style="color: #d0d0d0">])</span>
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;last_updated&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;last_updated&#39;</span><span style="color: #d0d0d0">])</span>
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;price&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;price&#39;</span><span style="color: #d0d0d0">])</span>
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;where&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;where&#39;</span><span style="color: #d0d0d0">])</span>
+<span style="color: #0000aa">for</span> result <span style="color: #0000aa">in</span> results:
+    <span style="color: #0000aa">print</span>(result)
+    df[<span style="color: #aa5500">&#39;id&#39;</span>].append(result[<span style="color: #aa5500">&#39;id&#39;</span>])
+    df[<span style="color: #aa5500">&#39;repost_of&#39;</span>].append(result[<span style="color: #aa5500">&#39;repost_of&#39;</span>])
+    df[<span style="color: #aa5500">&#39;name&#39;</span>].append(result[<span style="color: #aa5500">&#39;name&#39;</span>])
+    df[<span style="color: #aa5500">&#39;url&#39;</span>].append(result[<span style="color: #aa5500">&#39;url&#39;</span>])
+    df[<span style="color: #aa5500">&#39;datetime&#39;</span>].append(result[<span style="color: #aa5500">&#39;datetime&#39;</span>])
+    df[<span style="color: #aa5500">&#39;last_updated&#39;</span>].append(result[<span style="color: #aa5500">&#39;last_updated&#39;</span>])
+    df[<span style="color: #aa5500">&#39;price&#39;</span>].append(result[<span style="color: #aa5500">&#39;price&#39;</span>])
+    df[<span style="color: #aa5500">&#39;where&#39;</span>].append(result[<span style="color: #aa5500">&#39;where&#39;</span>])
     
-    <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;has_image&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;has_image&#39;</span><span style="color: #d0d0d0">])</span>
-    <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">result[</span><span style="color: #ed9d13">&#39;geotag&#39;</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">==</span> <span style="color: #24909d">None</span><span style="color: #d0d0d0">:</span>
-            <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;latitude&#39;</span><span style="color: #d0d0d0">].append(</span><span style="color: #3677a9">0.0</span><span style="color: #d0d0d0">)</span>
-            <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;longitude&#39;</span><span style="color: #d0d0d0">].append(</span><span style="color: #3677a9">0.0</span><span style="color: #d0d0d0">)</span>
-    <span style="color: #6ab825; font-weight: bold">else</span><span style="color: #d0d0d0">:</span>
-        <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;latitude&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;geotag&#39;</span><span style="color: #d0d0d0">][</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">])</span>
-        <span style="color: #d0d0d0">df[</span><span style="color: #ed9d13">&#39;longitude&#39;</span><span style="color: #d0d0d0">].append(result[</span><span style="color: #ed9d13">&#39;geotag&#39;</span><span style="color: #d0d0d0">][</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">])</span>
+    df[<span style="color: #aa5500">&#39;has_image&#39;</span>].append(result[<span style="color: #aa5500">&#39;has_image&#39;</span>])
+    <span style="color: #0000aa">if</span> result[<span style="color: #aa5500">&#39;geotag&#39;</span>] == <span style="color: #00aaaa">None</span>:
+            df[<span style="color: #aa5500">&#39;latitude&#39;</span>].append(<span style="color: #009999">0.0</span>)
+            df[<span style="color: #aa5500">&#39;longitude&#39;</span>].append(<span style="color: #009999">0.0</span>)
+    <span style="color: #0000aa">else</span>:
+        df[<span style="color: #aa5500">&#39;latitude&#39;</span>].append(result[<span style="color: #aa5500">&#39;geotag&#39;</span>][<span style="color: #009999">0</span>])
+        df[<span style="color: #aa5500">&#39;longitude&#39;</span>].append(result[<span style="color: #aa5500">&#39;geotag&#39;</span>][<span style="color: #009999">1</span>])
 
 
-<span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">pd.DataFrame(df)</span>
+b = pd.DataFrame(df)
 
 
-<span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">get_as_dataframe(sheet)</span>
-<span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a.iloc[:,</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">:</span><span style="color: #3677a9">11</span><span style="color: #d0d0d0">]</span>
-<span style="color: #d0d0d0">a.dropna(inplace=</span><span style="color: #24909d">True</span><span style="color: #d0d0d0">)</span>
+a = get_as_dataframe(sheet)
+a = a.iloc[:,<span style="color: #009999">0</span>:<span style="color: #009999">11</span>]
+a.dropna(inplace=<span style="color: #00aaaa">True</span>)
 
-<span style="color: #d0d0d0">final</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">pd.concat([a,b])</span>
-<span style="color: #d0d0d0">final[</span><span style="color: #ed9d13">&#39;id&#39;</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">final[</span><span style="color: #ed9d13">&#39;id&#39;</span><span style="color: #d0d0d0">].astype(</span><span style="color: #ed9d13">&#39;float&#39;</span><span style="color: #d0d0d0">)</span>
-<span style="color: #d0d0d0">final.drop_duplicates(</span><span style="color: #ed9d13">&#39;id&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">inplace=</span><span style="color: #24909d">True</span><span style="color: #d0d0d0">)</span>
-<span style="color: #d0d0d0">set_with_dataframe(sheet,final)</span>
+final = pd.concat([a,b])
+final[<span style="color: #aa5500">&#39;id&#39;</span>] = final[<span style="color: #aa5500">&#39;id&#39;</span>].astype(<span style="color: #aa5500">&#39;float&#39;</span>)
+final.drop_duplicates(<span style="color: #aa5500">&#39;id&#39;</span>, inplace=<span style="color: #00aaaa">True</span>)
+set_with_dataframe(sheet,final)
 </pre></div>
+
 
 <p>If anything here is confusing (or <em>wrong</em>!), or if I’ve missed
 important details, please
