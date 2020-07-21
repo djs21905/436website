@@ -51,7 +51,10 @@
        uses batch processing to extract, transform and load Craigslist data from the Craigslist API.  An AWS Windows EC2 instance runs a python ETL script in 1 hour intervals. 
       This was achieved using Windows Task Manager event handling.  The extracted/transformed data is stored in tabular format using Google Sheets.  After considering
       several differen NoSQL and SQL data storage options the most cost and time efficient way to achieve the goal was with Google Sheets.  The ELK stack was also tested
-      as a potential workflow but public sharing of Kibana visualizations was not possible.  Tableau was used for data visualization.  Dashboards generated in
+      as a potential workflow but public sharing of Kibana visualizations was not possible. 
+      <br>
+      <br>
+      Tableau was used for data visualization.  Dashboards generated in
       Tableau were subsequently saved to Tableau Public, enabling public access. Tableau has a built in connector for Google Sheets, making the importing and 
       maintenance of data intuitive and simple. Tableau Public also has an auto refresh feature for visualizations that are populated by Google Sheets data. Data
      is updated once per day automatically.  The initial goal of creating a fully automated data pipeline was achieved. 
