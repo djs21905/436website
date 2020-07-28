@@ -47,9 +47,9 @@
 
 <div class="row-fluid">
   <div class="span12">
-    <p> The <a href="https://pypi.org/project/python-craigslist/">Python Craigslist API Wrapper</a> was used as the primary data source for this project. Latitude and Longitude data
-      generated from Craigslist was used in conjunction with geopy reverse search functionality.  From the geographical coordinates, Zip Code and neighborhood columns were retrieved and appended.  Furthermore, 
-      geopy was used to calculate the distance in (km) from Northwestern University for each rental property. This column was added to see if a correlation existed between housing price and
+    <p> The <a href="https://pypi.org/project/python-craigslist/">Python Craigslist API Wrapper</a> was used as the primary data source for this project. Latitude and longitude data
+      generated from Craigslist was used in conjunction with geopy reverse search functionality.  From the geographical coordinates, zip code and neighborhood columns were retrieved and appended.  Furthermore, 
+      geopy was used to calculate the distance (km) from Northwestern University for each rental property. This column was added to determine if a correlation existed between housing price and
       distance from NU. 
       <br>
       The Data Pipeline uses batch processing to extract, transform and load Craigslist data from the Craigslist API into Google Sheets.  The ETL process is handled by a python script housed on an AWS Windows EC2 instance. The script runs automatically in 1 hour intervals. 
@@ -70,13 +70,13 @@
 
 <ul>
   <li>Python for ETL</li>
-  <li>AWS for ETL Automation</li>
+  <li>AWS for ETL automation</li>
   <li>GCP Google Sheets for data storage</li>
   <li>Tableau/Tableau Public for public data visualization</li>
-  <li>GitHub Pages with Bootstrap and HTML for webpage styling</li>
+  <li>GitHub Pages with Bootstrap and HTML for webpage styling & application hosting</li>
 </ul>
 
-<p>Below is the python script used for the ETL process. It is housed on an AWS EC2 and runs in 1 hour intervals. Several packages were used including:</p>
+<p>Below is the python script used for the ETL process. It is housed on an AWS EC2 instance and runs in 1 hour intervals. Several packages were used including:</p>
 
 <ul>
   <li><a href="https://pypi.org/project/python-craigslist/">Python Craiglist</a></li>
@@ -200,9 +200,9 @@
   <h2>Forecasting & Data Visualization with Tableau</h2>
 </div>
 <p>Under normal circumstances the housing market can be extremely volatile.  Given the current COVID-19 pandemic the future of the housing market, specifically the rental  
-  propety business is uncertain. With many colleges shifting to an online learning model, demand for housing and rentals is unstable. How do investors know whether now is a good time
+  property business is uncertain. With many colleges shifting to an online learning model, demand for housing and rentals is unstable. How do investors know whether now is a good time
   to purchase property? One variable we can analyze is the inventory of rentals.  If rental inventory is high, demand is likely low and prospective investors
-  might want to re-think entering the market.  The converse is true as well.  The goal of this application is to forecast rental inventory. Exponential smoothing was used to genertate a forecast for housing listings per day. </p>
+  might want to re-think entering the market.  The converse is true as well.  The goal of this application is to forecast rental inventory. Exponential smoothing was used to generate a forecast for housing listings per day. </p>
 <div class='tableauPlaceholder' id='viz1595953018004' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fi&#47;FinalDashboard_15959529234060&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='FinalDashboard_15959529234060&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fi&#47;FinalDashboard_15959529234060&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1595953018004');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='800px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='800px';} else { vizElement.style.width='100%';vizElement.style.height='1400px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     <hr />
 
