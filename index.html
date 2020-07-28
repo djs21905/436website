@@ -52,6 +52,7 @@
       geopy was used to calculate the distance (km) from Northwestern University for each rental property. This column was added to determine if a correlation existed between housing price and
       distance from NU. 
       <br>
+      <br>
       The Data Pipeline uses batch processing to extract, transform and load Craigslist data from the Craigslist API into Google Sheets.  The ETL process is handled by a python script housed on an AWS Windows EC2 instance. The script runs automatically in 1 hour intervals. 
       This was achieved using Windows Task Manager event handling.  The extracted/transformed data is stored in tabular format using Google Sheets.  After considering
       several different NoSQL and SQL data storage options the most cost and time efficient way to achieve the goal was with Google Sheets.  The ELK stack was also tested
